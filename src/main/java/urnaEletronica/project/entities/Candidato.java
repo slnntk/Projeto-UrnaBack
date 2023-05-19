@@ -30,7 +30,16 @@ public class Candidato {
         this.partido = partido;
     }
 
-
+    @Override
+    public String toString() {
+        return "Candidato{" +
+                "id=" + id +
+                ", number=" + number +
+                ", nome='" + nome + '\'' +
+                ", votos=" + votos +
+                ", partido=" +  partido +
+                '}';
+    }
 
     @Override
     public boolean equals(Object o) {
