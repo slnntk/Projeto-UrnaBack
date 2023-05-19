@@ -17,11 +17,14 @@ public class Eleitor implements Serializable {
     private Long titulo;
     private Boolean hasVoted;
 
+    @OneToOne
+    @JoinColumn(name = "candidato_id")
+    private Candidato candidato;
+
     public Eleitor() {
     }
 
-    public Eleitor(Long id, Long titulo, Boolean hasVoted) {
-        this.id = id;
+    public Eleitor(Long titulo, Boolean hasVoted) {
         this.titulo = titulo;
         this.hasVoted = hasVoted;
     }
@@ -46,6 +49,10 @@ public class Eleitor implements Serializable {
     @Override
     public int hashCode() {
         return getTitulo() != null ? getTitulo().hashCode() : 0;
+    }
+
+    public Candidato getCandidato() {
+        return candidato;
     }
 
     public Long getTitulo() {
