@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import urnaEletronica.project.entities.Eleitor;
+import urnaEletronica.project.entities.Eleitor;
 import urnaEletronica.project.repositories.EleitorRepository;
 
 import java.util.List;
@@ -28,5 +29,12 @@ public class EleitorService {
         return repository.findByTitulo(titulo);
     }
 
+    public Eleitor insert(Eleitor obj){
+        return repository.save(obj);
+    }
+
+    public void delete(Long id){
+        repository.deleteById(id);
+    }
 
 }

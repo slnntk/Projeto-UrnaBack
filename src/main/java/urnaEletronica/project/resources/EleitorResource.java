@@ -3,13 +3,13 @@ package urnaEletronica.project.resources;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import urnaEletronica.project.entities.Eleitor;
 import urnaEletronica.project.entities.Eleitor;
 import urnaEletronica.project.services.EleitorService;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -37,7 +37,24 @@ public class EleitorResource {
         return ResponseEntity.ok().body(eleitor);
     }
 
+    @PostMapping
+    public ResponseEntity<Eleitor> insert(@RequestBody Eleitor obj){
+        obj = service.insert(obj);
+        URI uri = ServletUriComponentsBuilder
+                .fromCurrentRequestUri()
+                .path("/id/{id}")
+                .buildAndExpand(obj.getId())
+                .toUri();
+        return ResponseEntity.created(uri).body(obj);
+    }
 
+    @DeleteMapping("/id/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id){
+        service.delete(id);
+        return ResponseEntity
+                .noContent()
+                .build();
+    }
 
 
 }
