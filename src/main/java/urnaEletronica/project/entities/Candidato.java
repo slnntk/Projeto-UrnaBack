@@ -1,5 +1,7 @@
 package urnaEletronica.project.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
@@ -14,7 +16,6 @@ public class Candidato {
     @Column(nullable = false)
     private int votos = 0;
 
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "partido_id")
     private Partido partido;
@@ -57,8 +58,12 @@ public class Candidato {
         return result;
     }
 
-    public String getNome() {
-        return nome;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Integer getNumber() {
@@ -69,12 +74,12 @@ public class Candidato {
         this.number = number;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public String getNome() {
+        return nome;
     }
 
-    public Long getId() {
-        return id;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public int getVotos() {
@@ -85,6 +90,7 @@ public class Candidato {
         this.votos = votos;
     }
 
+    @JsonBackReference
     public Partido getPartido() {
         return partido;
     }

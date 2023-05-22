@@ -3,6 +3,7 @@ package urnaEletronica.project.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import urnaEletronica.project.entities.Candidato;
+import urnaEletronica.project.entities.Candidato;
 import urnaEletronica.project.repositories.CandidatoRepository;
 
 import java.util.List;
@@ -25,6 +26,14 @@ public class CandidatoService {
 
     public Candidato findByNumber(Integer number){
         return repository.findByNumber(number);
+    }
+
+    public Candidato insert(Candidato obj){
+        return repository.save(obj);
+    }
+
+    public void delete(Long id){
+        repository.deleteById(id);
     }
 
 }
