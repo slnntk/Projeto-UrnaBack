@@ -3,13 +3,12 @@ package urnaEletronica.project.resources;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import urnaEletronica.project.entities.Partido;
 import urnaEletronica.project.services.PartidoService;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -35,6 +34,25 @@ public class PartidoResource {
     public ResponseEntity<Partido> findByName(@PathVariable String name){
         Partido Partido = service.findByName(name);
         return ResponseEntity.ok().body(Partido);
+    }
+
+    @PostMapping
+    public ResponseEntity<Partido> insert(@RequestBody Partido obj){
+        obj = service.insert(obj);
+        URI uri = ServletUriComponentsBuilder
+                .fromCurrentRequestUri()
+                .path("/id/{id}")
+                .buildAndExpand(obj.getId())
+                .toUri();
+        return ResponseEntity.created(uri).body(obj);
+    }
+
+    @DeleteMapping("/id/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id){
+        service.delete(id);
+        return ResponseEntity
+                .noContent()
+                .build();
     }
 
 

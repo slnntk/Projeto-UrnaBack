@@ -27,4 +27,12 @@ public class PartidoService {
         return repository.findByName(name);
     }
 
+    public Partido insert(Partido obj){
+        return repository.save(obj);
+    }
+
+    public void delete(Long id){
+        repository.deleteById(id);
+    }
+
 }
