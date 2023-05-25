@@ -1,10 +1,8 @@
 package urnaEletronica.project.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import urnaEletronica.project.entities.Eleitor;
-import urnaEletronica.project.entities.Eleitor;
+import urnaEletronica.project.domain.entities.Eleitor;
 import urnaEletronica.project.repositories.EleitorRepository;
 
 import java.util.List;

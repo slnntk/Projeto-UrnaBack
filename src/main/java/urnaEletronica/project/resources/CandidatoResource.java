@@ -1,16 +1,16 @@
 package urnaEletronica.project.resources;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import urnaEletronica.project.entities.Candidato;
-import urnaEletronica.project.entities.Candidato;
+import urnaEletronica.project.domain.entities.Candidato;
 import urnaEletronica.project.services.CandidatoService;
 
 import java.net.URI;
 import java.util.List;
+
+import urnaEletronica.project.dto.CandidatoDTO;
 
 @RestController
 @RequestMapping(value = "/candidatos")
@@ -20,9 +20,13 @@ public class CandidatoResource {
     private CandidatoService service;
 
     @GetMapping
-    public ResponseEntity<List<Candidato>> findAll(){
+    public ResponseEntity<List<CandidatoDTO>> findAll(){
         List<Candidato> list = service.findAll();
-        return ResponseEntity.ok().body(list);
+        List<CandidatoDTO> dtoList = list
+                .stream()
+                .map(x -> new CandidatoDTO(x))
+                .toList();
+        return ResponseEntity.ok().body(dtoList);
     }
 
     @GetMapping(value = "/id/{id}")

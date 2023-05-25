@@ -2,7 +2,7 @@ package urnaEletronica.project.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import urnaEletronica.project.entities.Partido;
+import urnaEletronica.project.domain.entities.Partido;
 import urnaEletronica.project.repositories.PartidoRepository;
 
 import java.util.List;

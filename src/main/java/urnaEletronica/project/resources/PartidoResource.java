@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import urnaEletronica.project.entities.Partido;
+import urnaEletronica.project.domain.entities.Partido;
 import urnaEletronica.project.services.PartidoService;
 
 import java.net.URI;

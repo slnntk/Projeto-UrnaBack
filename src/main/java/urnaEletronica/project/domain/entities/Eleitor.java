@@ -1,4 +1,4 @@
-package urnaEletronica.project.entities;
+package urnaEletronica.project.domain.entities;
 
 import jakarta.persistence.*;
 
