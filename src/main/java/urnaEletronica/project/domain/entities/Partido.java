@@ -1,5 +1,6 @@
 package urnaEletronica.project.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.io.Serial;
@@ -22,6 +23,7 @@ public class Partido implements Serializable {
 
 
     @OneToMany(mappedBy = "partido")
+    @JsonIgnoreProperties("partido") // Evita a serialização recursiva do partido em Candidato
     private Set<Candidato> candidatos = new HashSet<>();
 
 

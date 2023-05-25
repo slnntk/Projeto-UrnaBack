@@ -1,6 +1,7 @@
 package urnaEletronica.project.domain.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 @Entity
@@ -15,6 +16,7 @@ public class Candidato {
     private int votos = 0;
 
     @ManyToOne
+    @JsonIgnoreProperties("candidatos") // Evita a serialização recursiva do partido em Candidato
     @JoinColumn(name = "partido_id")
     private Partido partido;
 
@@ -88,7 +90,6 @@ public class Candidato {
         this.votos = votos;
     }
 
-    @JsonBackReference
     public Partido getPartido() {
         return partido;
     }

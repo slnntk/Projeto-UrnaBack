@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import urnaEletronica.project.domain.entities.Candidato;
 import urnaEletronica.project.domain.entities.Eleitor;
 import urnaEletronica.project.services.EleitorService;
 
@@ -41,7 +42,7 @@ public class EleitorResource {
         obj = service.insert(obj);
         URI uri = ServletUriComponentsBuilder
                 .fromCurrentRequestUri()
-                .path("/id/{id}")
+                .path("/{id}")
                 .buildAndExpand(obj.getId())
                 .toUri();
         return ResponseEntity.created(uri).body(obj);
