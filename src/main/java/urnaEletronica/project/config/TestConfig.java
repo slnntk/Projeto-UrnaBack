@@ -26,6 +26,7 @@ public class TestConfig implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        Scanner sc = new Scanner(System.in);
 
         List<Eleitor> eleitores = new ArrayList<>();
         Random random = new Random();
@@ -38,8 +39,8 @@ public class TestConfig implements CommandLineRunner {
 
         List<Partido> partidos = new ArrayList<>();
 
-        Partido partido1 = new Partido("Clã Uchiha");
-        Partido partido2 = new Partido("Clã Hyuga");
+        Partido partido1 = new Partido("Uchiha");
+        Partido partido2 = new Partido("Hyuga");
 
         List<Candidato> candidatos = new ArrayList<>();
         candidatos.add(new Candidato(10, "Gon Freecss", partido1));
@@ -60,6 +61,36 @@ public class TestConfig implements CommandLineRunner {
         eleitorRepository.saveAll(eleitores);
         partidoRepository.saveAll(partidos);
         candidatoRepository.saveAll(candidatos);
+
+        /*
+
+        -> Testar findById -> Eleitores
+
+        eleitores.forEach(System.out::println);
+        System.out.println(eleitorRepository.findByTitulo(sc.nextLong()));
+
+        */
+
+        /*
+
+        -> Testar findByNumber -> Candidatos
+
+        candidatos.forEach(System.out::println);
+        System.out.println(candidatoRepository.findByNumber(sc.nextInt()));
+
+        */
+
+
+
+        /*
+
+        -> Testar findByName -> Partido
+
+
+        partidos.forEach(System.out::println);
+        System.out.println(partidoRepository.findByName(sc.next()));
+
+        */
 
 
 

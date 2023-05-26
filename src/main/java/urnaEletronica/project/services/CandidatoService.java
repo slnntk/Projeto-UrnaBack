@@ -29,7 +29,7 @@ public class CandidatoService {
     public Candidato findByNumber(Integer number){
         List<Candidato> list = findAll()
                 .stream()
-                .filter(x -> x.getNumber() == number)
+                .filter(x -> Objects.equals(x.getNumber(), number))
                 .toList();
         Optional<Candidato> candidato = list.stream().findAny();
         findById(candidato.get().getId());

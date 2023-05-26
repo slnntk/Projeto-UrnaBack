@@ -40,7 +40,7 @@ public class Partido implements Serializable {
         return "Partido{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", candidatos=" + candidatos +
+                ", candidatos=" +
                 '}';
     }
 
