@@ -31,8 +31,7 @@ public class EleitorService {
                 .filter(x -> Objects.equals(x.getTitulo(), number))
                 .toList();
         Optional<Eleitor> eleitor = list.stream().findAny();
-        Eleitor obj = findById(eleitor.get().getId());
-        return obj;
+        return findById(eleitor.get().getId());
     }
 
     public Eleitor insert(Eleitor obj){

@@ -7,6 +7,7 @@ import urnaEletronica.project.domain.entities.Eleitor;
 import urnaEletronica.project.repositories.CandidatoRepository;
 import urnaEletronica.project.repositories.EleitorRepository;
 import urnaEletronica.project.repositories.PartidoRepository;
+import urnaEletronica.project.services.exception.ObjectNotFoundException;
 
 @Service
 public class UrnaService{
@@ -29,15 +30,20 @@ public class UrnaService{
 
 
     public Eleitor vote(Integer numberByCandidate, Long tituloByEleitor){
-        Eleitor obj = eleitorRepository.findByTitulo(tituloByEleitor);
-        System.out.println(obj);
-        if (!obj.getHasVoted()){
-            Candidato candidato = candidatoRepository.findByNumber(numberByCandidate);
-            candidato = voteCandidate(candidato);
-            obj = voteEleitor(obj, candidato);
-            eleitorService.update(obj.getId(), obj);
-            candidatoService.update(candidato.getId(), candidato);
-            return obj;
+
+        try{
+            Eleitor obj = eleitorRepository.findByTitulo(tituloByEleitor);
+            if (!obj.getHasVoted()){
+                Candidato candidato = candidatoRepository.findByNumber(numberByCandidate);
+                candidato = voteCandidate(candidato);
+                obj = voteEleitor(obj, candidato);
+                eleitorService.update(obj.getId(), obj);
+                candidatoService.update(candidato.getId(), candidato);
+                return obj;
+            }
+
+        } catch (NullPointerException e){
+            throw new ObjectNotFoundException("Eleitor not found, vote can't conclude");
         }
         return null;
     }

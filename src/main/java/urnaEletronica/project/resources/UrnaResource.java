@@ -23,7 +23,6 @@ public class UrnaResource {
 
     @PutMapping(value = "/number/{number}/titulo/{titulo}")
     public ResponseEntity<Eleitor> vote(@PathVariable Integer number,@PathVariable Long titulo){
-        System.out.println(titulo);
         Eleitor obj;
         obj = urnaService.vote(number, titulo);
         return ResponseEntity.ok().body(obj);
