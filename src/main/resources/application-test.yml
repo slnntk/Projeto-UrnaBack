@@ -1,5 +1,4 @@
 spring:
-
   datasource:
     url: jdbc:h2:mem:urnatestdb2
     username: sa

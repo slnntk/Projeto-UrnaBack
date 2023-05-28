@@ -28,6 +28,9 @@ public class TestConfig implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Scanner sc = new Scanner(System.in);
 
+        System.out.println("TEST - CONFIG USED (H2 DATABASE)");
+
+
         List<Eleitor> eleitores = new ArrayList<>();
         Random random = new Random();
         for (int i = 1; i <= 20; i++) {
