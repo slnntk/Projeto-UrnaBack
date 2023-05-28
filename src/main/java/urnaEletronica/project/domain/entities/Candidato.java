@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "tb_candidato")
 public class Candidato {
@@ -19,6 +22,10 @@ public class Candidato {
     @JsonIgnoreProperties("candidatos") // Evita a serialização recursiva do partido em Candidato
     @JoinColumn(name = "partido_id")
     private Partido partido;
+
+    @OneToMany(mappedBy = "candidato")
+    @JsonIgnoreProperties("candidato")
+    private Set<Eleitor> eleitores = new HashSet<>();
 
 
     public Candidato() {
@@ -58,6 +65,11 @@ public class Candidato {
         return result;
     }
 
+    public void addEleitor(Eleitor e){
+        getEleitores().add(e);
+    }
+
+
     public Long getId() {
         return id;
     }
@@ -86,6 +98,10 @@ public class Candidato {
         return votos;
     }
 
+    public Set<Eleitor> getEleitores() {
+        return eleitores;
+    }
+
     public void setVotos(int votos) {
         this.votos = votos;
     }
@@ -96,5 +112,9 @@ public class Candidato {
 
     public void setPartido(Partido partido) {
         this.partido = partido;
+    }
+
+    public void setEleitores(Set<Eleitor> eleitores) {
+        this.eleitores = eleitores;
     }
 }
