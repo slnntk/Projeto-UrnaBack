@@ -5,12 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import urnaEletronica.project.domain.entities.Candidato;
 import urnaEletronica.project.domain.entities.Eleitor;
 import urnaEletronica.project.services.EleitorService;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/eleitores")
@@ -56,5 +56,9 @@ public class EleitorResource {
                 .build();
     }
 
-
+    @PutMapping(value = "/id/{id}")
+    public ResponseEntity<Eleitor> update(@PathVariable Long id, @RequestBody Eleitor obj){
+        obj = service.update(id, obj);
+        return ResponseEntity.ok().body(obj);
+    }
 }

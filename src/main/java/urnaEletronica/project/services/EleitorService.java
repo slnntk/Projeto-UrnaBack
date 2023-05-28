@@ -2,7 +2,6 @@ package urnaEletronica.project.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import urnaEletronica.project.domain.entities.Candidato;
 import urnaEletronica.project.domain.entities.Eleitor;
 import urnaEletronica.project.repositories.EleitorRepository;
 
@@ -41,6 +40,19 @@ public class EleitorService {
 
     public void delete(Long id){
         repository.deleteById(id);
+    }
+
+    public Eleitor update(Long id, Eleitor obj){
+        Optional<Eleitor> optionalEleitor = repository.findById(obj.getId());
+        Eleitor eleitor = optionalEleitor.get();
+        updateData(eleitor, obj);
+        return repository.save(eleitor);
+    }
+
+    private void updateData(Eleitor newObj, Eleitor obj) {
+        newObj.setId(obj.getId());
+        newObj.setTitulo(obj.getTitulo());
+        newObj.setHasVoted(obj.getHasVoted());
     }
 
 }
