@@ -2,14 +2,14 @@ package urnaEletronica.project.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import urnaEletronica.project.domain.entities.Candidato;
+
+import urnaEletronica.project.domain.entities.Partido;
 import urnaEletronica.project.domain.entities.Partido;
 import urnaEletronica.project.repositories.PartidoRepository;
 import urnaEletronica.project.services.exception.ObjectNotFoundException;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class PartidoService {
@@ -42,6 +42,19 @@ public class PartidoService {
 
     public void delete(Long id){
         repository.deleteById(id);
+    }
+
+    public Partido update(Long id, Partido obj){
+        Optional<Partido> optionalPartido = repository.findById(obj.getId());
+        Partido Partido = optionalPartido.get();
+        updateData(Partido, obj);
+        return repository.save(Partido);
+    }
+
+    private void updateData(Partido newObj, Partido obj) {
+        newObj.setId(obj.getId());
+        newObj.setCandidatos(obj.getCandidatos());
+        newObj.setName(obj.getName());
     }
 
 }

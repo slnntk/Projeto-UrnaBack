@@ -55,5 +55,11 @@ public class PartidoResource {
                 .build();
     }
 
+    @PutMapping(value = "/id/{id}")
+    public ResponseEntity<Partido> update(@PathVariable Long id, @RequestBody Partido obj){
+        obj = service.update(id, obj);
+        return ResponseEntity.ok().body(obj);
+    }
+
 
 }
