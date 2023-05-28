@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import urnaEletronica.project.domain.entities.Eleitor;
 import urnaEletronica.project.repositories.EleitorRepository;
+import urnaEletronica.project.services.exception.ObjectNotFoundException;
 
 import java.util.List;
 import java.util.Objects;
@@ -21,7 +22,7 @@ public class EleitorService {
 
     public Eleitor findById(Long id){
         Optional<Eleitor> obj = repository.findById(id);
-        return obj.get();
+        return obj.orElseThrow(() -> new ObjectNotFoundException("Eleitor not found"));
     }
 
     public Eleitor findByTitulo(Long number){
@@ -30,8 +31,8 @@ public class EleitorService {
                 .filter(x -> Objects.equals(x.getTitulo(), number))
                 .toList();
         Optional<Eleitor> eleitor = list.stream().findAny();
-        findById(eleitor.get().getId());
-        return eleitor.get();
+        Eleitor obj = findById(eleitor.get().getId());
+        return obj;
     }
 
     public Eleitor insert(Eleitor obj){
