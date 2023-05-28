@@ -51,8 +51,13 @@ public class Eleitor implements Serializable {
         return getTitulo() != null ? getTitulo().hashCode() : 0;
     }
 
-    public Candidato getCandidato() {
-        return candidato;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getTitulo() {
@@ -71,11 +76,11 @@ public class Eleitor implements Serializable {
         this.hasVoted = hasVoted;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Candidato getCandidato() {
+        return candidato;
     }
 
-    public Long getId() {
-        return id;
+    public void setCandidato(Candidato candidato) {
+        this.candidato = candidato;
     }
 }
