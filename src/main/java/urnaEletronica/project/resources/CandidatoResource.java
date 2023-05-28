@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import urnaEletronica.project.domain.entities.Candidato;
+import urnaEletronica.project.domain.entities.Candidato;
 import urnaEletronica.project.services.CandidatoService;
 
 import java.net.URI;
@@ -58,6 +59,12 @@ public class CandidatoResource {
         return ResponseEntity
                 .noContent()
                 .build();
+    }
+
+    @PutMapping(value = "/id/{id}")
+    public ResponseEntity<Candidato> update(@PathVariable Long id, @RequestBody Candidato obj){
+        obj = service.update(id, obj);
+        return ResponseEntity.ok().body(obj);
     }
 
 }

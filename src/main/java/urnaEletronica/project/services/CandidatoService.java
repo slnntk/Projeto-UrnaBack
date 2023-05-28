@@ -3,6 +3,7 @@ package urnaEletronica.project.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import urnaEletronica.project.domain.entities.Candidato;
+import urnaEletronica.project.domain.entities.Candidato;
 import urnaEletronica.project.repositories.CandidatoRepository;
 import urnaEletronica.project.services.exception.ObjectNotFoundException;
 
@@ -43,5 +44,22 @@ public class CandidatoService {
     public void delete(Long id){
         repository.deleteById(id);
     }
+
+    public Candidato update(Long id, Candidato obj){
+        Optional<Candidato> optionalCandidato = repository.findById(obj.getId());
+        Candidato Candidato = optionalCandidato.get();
+        updateData(Candidato, obj);
+        return repository.save(Candidato);
+    }
+
+    private void updateData(Candidato newObj, Candidato obj) {
+        newObj.setId(obj.getId());
+        newObj.setNome(obj.getNome());
+        newObj.setNumber(obj.getNumber());
+        newObj.setPartido(obj.getPartido());
+        newObj.setVotos(obj.getVotos());
+
+    }
+    
 
 }
