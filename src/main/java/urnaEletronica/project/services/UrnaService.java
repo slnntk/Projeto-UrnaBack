@@ -35,7 +35,7 @@ public class UrnaService{
             Eleitor obj = eleitorRepository.findByTitulo(tituloByEleitor);
             if (!obj.getHasVoted()){
                 Candidato candidato = candidatoRepository.findByNumber(numberByCandidate);
-                candidato = voteCandidate(candidato);
+                candidato = voteCandidate(candidato, obj);
                 obj = voteEleitor(obj, candidato);
                 eleitorService.update(obj.getId(), obj);
                 candidatoService.update(candidato.getId(), candidato);
@@ -48,8 +48,10 @@ public class UrnaService{
         return null;
     }
 
-    private Candidato voteCandidate(Candidato candidato){
+
+    private Candidato voteCandidate(Candidato candidato, Eleitor eleitor){
         candidato.setVotos(candidato.getVotos()+1);
+        candidato.addEleitor(eleitor);
         return candidato;
     }
 
