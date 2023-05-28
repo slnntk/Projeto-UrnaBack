@@ -1,5 +1,7 @@
 package urnaEletronica.project.config;
 
+import jakarta.persistence.EntityManager;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +20,8 @@ import java.util.*;
 public class mySqlConfig implements CommandLineRunner {
 
     @Autowired
+    private EntityManager entityManager;
+    @Autowired
     private EleitorRepository eleitorRepository;
     @Autowired
     private CandidatoRepository candidatoRepository;
@@ -25,43 +29,10 @@ public class mySqlConfig implements CommandLineRunner {
     private PartidoRepository partidoRepository;
 
     @Override
+    @Transactional
     public void run(String... args) throws Exception {
         Scanner sc = new Scanner(System.in);
 
-
         System.out.println("DRF - CONFIG USED (MYSQL DATABASE)");
-        /*
-
-        -> Testar findById -> Eleitores
-
-        eleitores.forEach(System.out::println);
-        System.out.println(eleitorRepository.findByTitulo(sc.nextLong()));
-
-        */
-
-        /*
-
-        -> Testar findByNumber -> Candidatos
-
-        candidatos.forEach(System.out::println);
-        System.out.println(candidatoRepository.findByNumber(sc.nextInt()));
-
-        */
-
-
-
-        /*
-
-        -> Testar findByName -> Partido
-
-
-        partidos.forEach(System.out::println);
-        System.out.println(partidoRepository.findByName(sc.next()));
-
-        */
-
-
-
-
     }
 }

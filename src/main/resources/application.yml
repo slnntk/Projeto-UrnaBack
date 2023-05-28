@@ -3,5 +3,3 @@ spring:
     active: test
   jpa:
     open-in-view: true
-    hibernate:
-      ddl-auto: create
