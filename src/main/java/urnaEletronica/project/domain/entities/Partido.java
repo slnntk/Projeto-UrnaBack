@@ -36,15 +36,6 @@ public class Partido implements Serializable {
     }
 
     @Override
-    public String toString() {
-        return "Partido{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", candidatos=" +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Partido partido)) return false;
@@ -70,8 +61,19 @@ public class Partido implements Serializable {
         candidato.setPartido(null);
     }
 
-    public Set<Candidato> getCandidatos() {
-        return candidatos;
+    public Integer getVotosDoPartido() {
+        return candidatos
+                .stream()
+                .map(x -> x.getVotos())
+                .reduce(0, (x, y) -> x+y);
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -82,15 +84,11 @@ public class Partido implements Serializable {
         this.name = name;
     }
 
+    public Set<Candidato> getCandidatos() {
+        return candidatos;
+    }
+
     public void setCandidatos(Set<Candidato> candidatos) {
         this.candidatos = candidatos;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
     }
 }
