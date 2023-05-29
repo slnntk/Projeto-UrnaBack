@@ -10,6 +10,7 @@ import java.util.Set;
 @Entity
 @Table(name = "tb_candidato")
 public class Candidato {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
