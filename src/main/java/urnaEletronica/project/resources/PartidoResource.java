@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/partidos")
+@CrossOrigin(origins = "http://localhost:63342")
 public class PartidoResource {
 
     @Autowired
