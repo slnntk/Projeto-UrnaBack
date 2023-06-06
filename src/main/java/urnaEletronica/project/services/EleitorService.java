@@ -22,6 +22,7 @@ public class EleitorService {
 
     public Eleitor findById(Long id){
         Optional<Eleitor> obj = repository.findById(id);
+        System.out.println("passou aqui");
         return obj.orElseThrow(() -> new ObjectNotFoundException("Eleitor not found"));
     }
 
@@ -31,7 +32,10 @@ public class EleitorService {
                 .filter(x -> Objects.equals(x.getTitulo(), number))
                 .toList();
         Optional<Eleitor> eleitor = list.stream().findAny();
-        return findById(eleitor.get().getId());
+        if (list.size() == 0){
+            return eleitor.orElseThrow(() -> new ObjectNotFoundException("Eleitor not found"));
+        }
+        return eleitor.get();
     }
 
     public Eleitor insert(Eleitor obj){
