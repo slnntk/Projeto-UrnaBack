@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import urnaEletronica.project.domain.entities.Candidato;
 import urnaEletronica.project.domain.entities.Eleitor;
+import urnaEletronica.project.domain.entities.Voto;
 import urnaEletronica.project.repositories.CandidatoRepository;
 import urnaEletronica.project.repositories.EleitorRepository;
 import urnaEletronica.project.repositories.PartidoRepository;
@@ -25,6 +26,9 @@ public class UrnaService{
     private EleitorService eleitorService;
 
     @Autowired
+    private VotoService votoService;
+
+    @Autowired
     private PartidoRepository partidoRepository;
 
 
@@ -39,6 +43,9 @@ public class UrnaService{
                 obj = voteEleitor(obj, candidato);
                 eleitorService.update(obj.getId(), obj);
                 candidatoService.update(candidato.getId(), candidato);
+                Voto v = new Voto(obj, candidato);
+                votoService.insert(v);
+                votoService.update(v.getId(), v);
                 return obj;
             }
 
