@@ -33,8 +33,7 @@ public class CandidatoService {
                 .filter(x -> Objects.equals(x.getNumber(), number))
                 .toList();
         Optional<Candidato> candidato = list.stream().findAny();
-        findById(candidato.get().getId());
-        return candidato.get();
+        return candidato.orElseThrow(() -> new ObjectNotFoundException("Candidato not found"));
     }
 
     public Candidato insert(Candidato obj){
