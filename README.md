@@ -15,9 +15,12 @@ Também aprendi a aproveitar ainda mais a IDE que utilizo, a IntelliJ IDEA. Essa
 Aprendi muito com esse projeto, adquiri conhecimentos que me deixaram muito satisfeito e provaram o quão recompensador é estudar e se dedicar. Meu professor de programação orientada a objetos ficou muito satisfeito com o projeto e com o padrão de desenvolvimento que utilizei. Ele até me pediu para apresentá-lo à turma durante uma aula.
 
 Estou orgulhoso do resultado alcançado e feliz por ter superado desafios e expandindo meus conhecimentos em diferentes tecnologias e conceitos. Este projeto da urna eletrônica me proporcionou uma experiência valiosa no desenvolvimento de aplicações, consolidando minha compreensão teórica e prática. Estou animado para continuar aprendendo e evoluindo como desenvolvedor.
+## Imagens
+![IMG1](https://github.com/slnntk/Projeto-UrnaEletronica/blob/main/imgs/conjunto.png)
+
 
 ## Modelo conceitual
-![Modelo Conceitual](https://github.com/slnntk/Urna/blob/main/urnaeletronica.png)
+![Modelo Conceitual](https://github.com/slnntk/Urna/blob/main/imgs/urnaeletronica.png)
 
 # Tecnologias utilizadas
 ## Back end
