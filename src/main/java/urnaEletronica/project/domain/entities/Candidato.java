@@ -1,6 +1,7 @@
 package urnaEletronica.project.domain.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
@@ -99,6 +100,7 @@ public class Candidato {
         return votos;
     }
 
+    @JsonIdentityReference
     public Set<Eleitor> getEleitores() {
         return eleitores;
     }
