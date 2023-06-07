@@ -1,5 +1,6 @@
 package urnaEletronica.project.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.time.Instant;
@@ -43,6 +44,7 @@ public class Voto {
         return id;
     }
 
+    @JsonBackReference
     public Eleitor getEleitor() {
         return eleitor;
     }
