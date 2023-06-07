@@ -22,7 +22,6 @@ public class EleitorService {
 
     public Eleitor findById(Long id){
         Optional<Eleitor> obj = repository.findById(id);
-        System.out.println("passou aqui");
         return obj.orElseThrow(() -> new ObjectNotFoundException("Eleitor not found"));
     }
 

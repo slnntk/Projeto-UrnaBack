@@ -31,10 +31,7 @@ public class UrnaService{
     @Autowired
     private PartidoRepository partidoRepository;
 
-
-
     public Eleitor vote(Integer numberByCandidate, Long tituloByEleitor){
-
         try{
             Eleitor obj = eleitorRepository.findByTitulo(tituloByEleitor);
             if (!obj.getHasVoted()){
@@ -48,7 +45,6 @@ public class UrnaService{
                 votoService.update(v.getId(), v);
                 return obj;
             }
-
         } catch (NullPointerException e){
             throw new ObjectNotFoundException("Eleitor not found, vote can't conclude");
         }

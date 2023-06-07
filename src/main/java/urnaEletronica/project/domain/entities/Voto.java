@@ -44,7 +44,6 @@ public class Voto {
         return id;
     }
 
-    @JsonBackReference
     public Eleitor getEleitor() {
         return eleitor;
     }
