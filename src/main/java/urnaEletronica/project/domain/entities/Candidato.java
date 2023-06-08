@@ -29,6 +29,8 @@ public class Candidato {
     @JsonIgnoreProperties("candidato")
     private Set<Eleitor> eleitores = new HashSet<>();
 
+    private String fotoUrl;
+
 
     public Candidato() {
 
@@ -38,6 +40,13 @@ public class Candidato {
         this.number = number;
         this.nome = nome;
         this.partido = partido;
+    }
+
+    public Candidato(Integer number, String nome, Partido partido, String fotoUrl) {
+        this.number = number;
+        this.nome = nome;
+        this.partido = partido;
+        this.fotoUrl = fotoUrl;
     }
 
     @Override
@@ -119,5 +128,13 @@ public class Candidato {
 
     public void setEleitores(Set<Eleitor> eleitores) {
         this.eleitores = eleitores;
+    }
+
+    public String getFotoUrl() {
+        return fotoUrl;
+    }
+
+    public void setFotoUrl(String fotoUrl) {
+        this.fotoUrl = fotoUrl;
     }
 }

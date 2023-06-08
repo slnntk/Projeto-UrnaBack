@@ -10,11 +10,10 @@ import urnaEletronica.project.services.EleitorService;
 
 import java.net.URI;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/eleitores")
-@CrossOrigin(origins = "http://localhost:63343")
+@CrossOrigin(origins = "http://localhost:63342")
 public class EleitorResource {
 
     @Autowired

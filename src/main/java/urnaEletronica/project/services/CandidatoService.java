@@ -57,6 +57,7 @@ public class CandidatoService {
         newObj.setNumber(obj.getNumber());
         newObj.setPartido(obj.getPartido());
         newObj.setVotos(obj.getVotos());
+        newObj.setFotoUrl(obj.getFotoUrl());
 
     }
     

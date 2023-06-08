@@ -3,13 +3,13 @@ spring:
     url: jdbc:mysql://localhost:3306/urnaeletronica
     username: developer
     password: 1234567
-    driverClassName: com.mysql.cj.jdbc.Driver
-
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
+    hibernate:
+      ddl-auto: create
     database-platform: org.hibernate.dialect.MySQL8Dialect
     properties:
       hibernate:
-        ddl-auto: update
+        dialect: org.hibernate.dialect.MySQL5Dialect
         show_sql: true
         format_sql: true
-
