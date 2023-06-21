@@ -16,7 +16,11 @@ Aprendi muito com esse projeto, adquiri conhecimentos que me deixaram muito sati
 
 Estou orgulhoso do resultado alcançado e feliz por ter superado desafios e expandindo meus conhecimentos em diferentes tecnologias e conceitos. Este projeto da urna eletrônica me proporcionou uma experiência valiosa no desenvolvimento de aplicações, consolidando minha compreensão teórica e prática. Estou animado para continuar aprendendo e evoluindo como desenvolvedor.
 ## Imagens
-![IMG1](https://github.com/slnntk/Projeto-UrnaEletronica/blob/main/imgs/conjunto.png)
+![IMG1](https://github.com/slnntk/Projeto-UrnaEletronica/blob/main/imgs/Screenshot_1.png)
+![IMG1](https://github.com/slnntk/Projeto-UrnaEletronica/blob/main/imgs/Screenshot_2.png)
+![IMG1](https://github.com/slnntk/Projeto-UrnaEletronica/blob/main/imgs/Screenshot_3.png)
+-
+![IMG1](https://github.com/slnntk/Projeto-UrnaEletronica/blob/main/imgs/Screenshot_4.png)
 
 
 ## Modelo conceitual
